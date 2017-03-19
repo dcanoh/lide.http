@@ -1,8 +1,8 @@
-[http]
+[lide.http]
 author    = Hernán Darío Cano Hernández
 date      = 25/12/2016
 version   = 0.0.01
 windows   = x86:windows/x86/lua/http/init.lua,windows/x86/lua/http/requests.lua
 depends   = socket,ssl,ltn12,cjson,xml,md5,base64
-source    = http://github.com/dcanoh
+source    = http://github.com/dcanoh/lide.http
 mantainer = lide team

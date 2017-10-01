@@ -7,3 +7,4 @@ linux    = x64:linux/x64/lua/http/init.lua,linux/x64/lua/http/requests.lua
 depends  = socket,ssl,ltn12,cjson,xml,md5,base64
 source   = http://github.com/dcanoh/lide.http
 mantainer= lide team
+license  = lide license

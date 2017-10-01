@@ -1,5 +1,5 @@
 [lide.http]
-author    = Hernán Darío Cano Hernández
+author    = Hernan Dario Cano Hernandez
 date      = 25/12/2016
 version   = 0.0.01
 windows   = x86:windows/x86/lua/http/init.lua,windows/x86/lua/http/requests.lua

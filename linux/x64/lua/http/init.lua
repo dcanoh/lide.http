@@ -1,51 +1,17 @@
 -- /////////////////////////////////////////////////////////////////////////////////////////////////
 -- // Name:        lide/http/init.lua
--- // Purpose:     Initialize Lide Network framework
--- // Author:      Hernan Dario Cano [dario.canohdz@gmail.com]
+-- // Purpose:     HTTP facilities for Lua / Lide framework
+-- // Author:      Hernan Dario Cano [dcanohdev@gmail.com]
 -- // Created:     2016/10/16
--- // Copyright:   (c) 2016 Hernan D. Cano
+-- // Copyright:   (c) 2016 Hernan Dario Cano
 -- // License:     MIT License/X11 license
 -- /////////////////////////////////////////////////////////////////////////////////////////////////
 --
--- GNU/Linux Lua version:   5.1.5
--- Windows x86 Lua version: 5.1.4
 
---package.cpath = '/datos/Proyectos/lide/http/ourclibs/?.so;' .. package.cpath
---package.path  = '/datos/Proyectos/lide/http/ourlibs/?.lua;' .. package.path
-
---lide.libs = { network = {} }
---
---lide.libs.network.string         = require("string")
---lide.libs.network.table          = require("table")
---
---lide.libs.network.ltn12			 = require 'ltn12'
---lide.libs.network.mime           = require 'mime'
---
---lide.libs.network.md5    		 = require 'md5'
---lide.libs.network.base64 		 = require 'base64'
---
---lide.libs.network.socket         = require 'socket'
---lide.libs.network.socket.url     = require 'socket.url'
---lide.libs.network.socket.headers = require 'socket.headers'
---
---lide.libs.network.socket.http    = require 'socket.http'
---
---lide.libs.network.ssl            = require 'ssl'
---lide.libs.network.ssl.https      = require 'ssl.https'
---
---lide.libs.network.cjson          = require('cjson')
---lide.libs.network.cjson.safe     = require('cjson.safe')
---
---lide.libs.network.lub            = require 'lub'
---lide.libs.lfs 					 = require 'lfs'
---
---lide.libs.network.xml			 = require 'xml.init'
---
---lide.libs.network.yaml   		 = { core = require 'yaml.core' }
---
-
-local isString = lide.core.base.isstring
-local requests = require 'http.requests' 
+local isString   = lide.core.base.isstring
+local isFunction = lide.core.base.isfunction
+local requests   = require 'http.requests' 
+local curl       = require 'luacurl'
 
 local http = { get, put, post,
 	download, test_connection
@@ -62,29 +28,55 @@ function http.test_connection ( url )
 	end	
 end
 
-function http.download ( url, dest )
-	isString(url); isString(dest)
+function http.download(url, destfile, callback_function)
+	isString(url); isString(destfile); isFunction(callback_function)
 	
 	-- check tempfile path
-	local file, errm = io.open ( dest, 'w+b');
+	local file, errm = io.open ( destfile, 'w+b');
+	
 	if not file then		
-		local msg_error = '[lide.http] File error ' .. (  ':' and errm or 'there is a problem in the path of destination file.')
+		local msg_error = '[lide.http] File error ' .. (  ':' and errm or 'can\'t access to path of destination file.')
 		lide.core.error.lperr (msg_error, 2)
 	end
 
 	local connection, errm = http.test_connection(url);
 
 	if connection then
-		local response = requests.get(url)
-		local file_content = response.text
-		local temp_file = dest
+		local c = curl.new()
+
+		c:setopt(curl.OPT_URL, url)
+
+		local t = {} -- this will collect resulting chunks
+		c:setopt(curl.OPT_WRITEFUNCTION, function (param, buf)
+	    	table.insert(t, buf) -- store a chunk of data received
+			return #buf
+		end)
+
+		c:setopt(curl.OPT_PROGRESSFUNCTION, function(param, dltotal, dlnow)
+			if (dltotal ~= 0) then
+				if callback_function then
+					local percent = dlnow / dltotal * 100
+					assert(pcall(callback_function,dlnow, dltotal, percent))
+				end
+			end
+		end)
+
+		c:setopt(curl.OPT_NOPROGRESS, false) -- use this to activate progress
+		c:setopt(curl.OPT_SSL_VERIFYPEER, false)
+		c:setopt(curl.OPT_FOLLOWLOCATION, true)
+
+		c:perform()
 		
-		file:write(file_content); file:flush();
+		local return_string = table.concat(t) -- return the whole data as a string
+		
+		file:write(return_string)
+		file:flush()
 		file:close()
+	
 	else
 		local msg_error = '[lide.http] No connection ' .. (  ':' and errm or 'there is a problem in the url.')
 		lide.core.error.lperr (msg_error, 2)
-	end
+	end	
 end
 
 function http.get( ... )

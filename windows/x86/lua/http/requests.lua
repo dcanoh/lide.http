@@ -6,7 +6,7 @@ local url_parser   = require('socket.url')
 local ltn12        = require('ltn12')
 local json         = require('cjson.safe')
 local xml          = require('xml')
-local md5sum       = require('md5') -- TODO: Make modular?
+local md5sum       = require('md5.core') -- TODO: Make modular?
 local base64       = require('base64')
 
 local requests = {

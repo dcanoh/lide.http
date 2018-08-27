@@ -1,4 +1,11 @@
-.. _dcanoh: http://github.com/lidesdk/repos/dcanoh.rst>`.
+.. _dcanoh:  http://github.com/lidesdk/repos/dcanoh.rst>`.
+.. _ssl:     https://github.com/lidesdk/repos/blob/master/stable/ssl/readme.rst
+.. _ltn12:   https://github.com/lidesdk/repos/blob/master/stable/ltn12/readme.rst
+.. _cjson:   https://github.com/lidesdk/repos/blob/master/stable/cjson/readme.rst
+.. _xml:     https://github.com/lidesdk/repos/blob/master/stable/xml/readme.rst
+.. _md5:     https://github.com/lidesdk/repos/blob/master/stable/md5/readme.rst
+.. _base64:  https://github.com/lidesdk/base64/readme.rst
+.. _luacurl: https://github.com/lidesdk/repos/blob/master/stable/luacurl/readme.rst
 
 
 lide.http
@@ -38,14 +45,14 @@ dependencias
 
 Las siguientes dependencias son necesarias para poder ejecutar la librería:
 
-- ``socket``
-- ``ssl``
-- ``ltn12``
-- ``cjson``
-- ``xml``
-- ``md5``
-- ``base6``
-
+- socket 2.0.2
+- ssl_  0.4
+- ltn12_ 1.0.3
+- cjson_ 2.1.0
+- xml_ 1.1.2
+- md5_ 1.1.2
+- base64_ 5.1.0
+- luacurl_ 1.1.0
 
 lua API
 ^^^^^^^

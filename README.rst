@@ -8,6 +8,7 @@
 .. _luacurl: https://github.com/lidesdk/repos/blob/master/stable/luacurl/readme.rst
 
 
+
 lide.http
 =========
 
@@ -28,6 +29,7 @@ La librería lide.http nos permite hacer requests http (post, get, put) desde lu
 funciones adicionales que considero de bastante utilidad.
 
 
+
 instalacion
 ^^^^^^^^^^^
 
@@ -38,6 +40,7 @@ Para instalar ésta libreria recomiendo utilizar la linea de comandos de lide, u
 ``$ lide install lide.http``
 
 Recuerde que **lide.http** hace parte del repositorio de desarrollo: dcanoh_
+
 
 
 dependencias
@@ -54,14 +57,19 @@ Las siguientes dependencias son necesarias para poder ejecutar la librería:
 - base64_ 5.1.0
 - luacurl_ 1.1.0
 
+
+
 lua API
 ^^^^^^^
+
+Basic usage functions.
 
 http.download ( string Url, string Dest )
 	Download the given "url" to "dest" path to the system.
 
 http.test_connection ( string Url )
 	Test HTTP or HTTPS connection.
+
 
 
 http requests

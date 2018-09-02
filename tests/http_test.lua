@@ -1,28 +1,72 @@
+local lide = require 'lide.base.init'
 local http = require 'http.init'
-print(http)
+
 url = 'http://speedtest.ftp.otenet.gr/files/test100k.db'
 
---require 'lub'
+_tmp_file = '__readme.rst'
 
-if lide.platform.getOSName() == 'Linux' then
-	_tmp_file = '/tmp/__readme.rst'
-	os.execute 'rm /tmp/__readme.rst'
-else
-	_tmp_file = '__readme.rst'
-	os.execute 'del __readme.rst'
-end
+io.stdout:write '\n[lide.http.download] - download file '
 
-io.stdout:writ(e '\n[lide test] - download file '
-
-http.download(url, _tmp_file)
+http.download(url, _tmp_file, function ( dlnow, dltotal, percent )
+	-- print percent:
+	--- print (math.floor(percent) .. '%');
+	
+	-- print downloaded bytes:
+	--- print(dlnow .. ' bytes', dltotal .. ' bytes');
+end);
 
 if io.open(_tmp_file) then	
-	io.stdout:wr--it(e 'OK]\n'
+	io.stdout:write '[OK]\n'
 else
-	io.stdout:wr--it(e 'FAILED]\n'
+	io.stdout:write '[FAILED]\n'
 	assert(false)
 end
 
-for k, v in pairs( package.path:delim ';' ) do
-	print( k, v )
+io.stdout:write '[lide.http.get]    - http get request  '
+
+response = http.get 'http://httpbin.org/get'
+
+if response then
+	-- print response 
+	--- print(response.text)
+	io.stdout:write '[OK]\n'
 end
+
+io.stdout:write '[lide.http.head]   - http head request '
+
+response = http.head 'http://httpbin.org/headers'
+
+if response then
+	-- print response headers
+	---	table.foreach(response     	 , print)
+	---table.foreach(response.headers, print)
+
+	io.stdout:write '[OK]\n'
+end
+
+io.stdout:write '[lide.http.post]   - http post request '
+
+response = http.post 'http://httpbin.org/post'
+
+if response then
+	-- print response headers	
+	---table.foreach(response, print)
+	---table.foreach(response.headers, print)
+
+	io.stdout:write '[OK]\n'
+end
+
+io.stdout:write '[lide.http.delete] - http delete request '
+
+response = http.delete 'http://httpbin.org/delete'
+
+if response then
+	-- print response headers	
+	---table.foreach(response, print)
+	---table.foreach(response.headers, print)
+
+	io.stdout:write '[OK]\n'
+end
+
+
+

@@ -16,7 +16,7 @@ jobs:
         # zip needs libzzip-0.so.13
 
         # Install latest framework version from master:
-      - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
+      - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive && git pull origin develop && git checkout develop
       #- run: export LIDE_PATH=/home/circleci/project/shell
 
         # Runtime system libraries /usr/lib/x86_64-linux-gnu/

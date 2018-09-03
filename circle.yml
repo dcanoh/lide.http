@@ -7,8 +7,6 @@ jobs:
     steps:
       - checkout
 
-      - run: echo $PWD
-
       # install lua interpreter and luarocks
       - run: sudo apt-get install lua5.1 luarocks
 
@@ -19,17 +17,18 @@ jobs:
 
         # Install latest framework version from master:
       - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
+      - run: export LIDE_PATH=/home/circleci/project/shell
 
         # Runtime system libraries /usr/lib/x86_64-linux-gnu/
       - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
       - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libzzip-0.so.13 /usr/lib/x86_64-linux-gnu/libzzip-0.so.13 
 
         # Default lua interpreter
-      - run: chmod +x $PWD/shell/bin/linux/x64/lua
+      - run: chmod +x $LIDE_PATH/bin/linux/x64/lua
 
       # Preparing environment:
 
-#      - run: $LIDE_PATH/lide.sh install lanes        
+      - run: $LIDE_PATH/lide.sh install http
 
       # Executing tests:
 

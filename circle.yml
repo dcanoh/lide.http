@@ -18,19 +18,19 @@ jobs:
         # zip needs libzzip-0.so.13
 
         # Install latest framework version from master:
-#        - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
+      - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
 
         # Runtime system libraries /usr/lib/x86_64-linux-gnu/
-#        - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
-#        - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libzzip-0.so.13 /usr/lib/x86_64-linux-gnu/libzzip-0.so.13 
+      - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+      - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libzzip-0.so.13 /usr/lib/x86_64-linux-gnu/libzzip-0.so.13 
 
         # Default lua interpreter
-#        - run: chmod +x $PWD/shell/bin/linux/x64/lua
+      - run: chmod +x $PWD/shell/bin/linux/x64/lua
 
       # Preparing environment:
 
-#        - run: $LIDE_PATH/lide.sh install lanes        
+      - run: $LIDE_PATH/lide.sh install lanes        
 
       # Executing tests:
 
-##        - run: $LIDE_PATH/lide.sh tests/http_test.lua
+      - run: $LIDE_PATH/lide.sh tests/http_test.lua

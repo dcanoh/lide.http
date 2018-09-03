@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
 
-      - run: export LIDE_PATH=$PWD
+      - run: echo $PWD
 
       # install lua interpreter and luarocks
       - run: sudo apt-get install lua5.1 luarocks
@@ -29,7 +29,7 @@ jobs:
 
       # Preparing environment:
 
-      - run: $LIDE_PATH/lide.sh install lanes        
+#      - run: $LIDE_PATH/lide.sh install lanes        
 
       # Executing tests:
 

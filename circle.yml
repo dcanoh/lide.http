@@ -1,30 +1,37 @@
-dependencies:
-  pre:
-    # install lua interpreter and luarocks
-    - sudo apt-get install lua5.1 luarocks
+version: 2
+jobs:
+  build:
+    docker:
+#      - image: quay.io/3scale/s2i-openresty-centos7:luarocks-build
+       - image: jfernandes/circleci-node-lua:v1.0.0
+    steps:
+      - checkout
+      - run: busted spec
 
-test:
-  override:
 
-    # Installation process:
 
-      # xml needs libstdc++6 (- sudo apt-get install libstdc++6)
-      # zip needs libzzip-0.so.13
+      # install lua interpreter and luarocks
+      - run: sudo apt-get install lua5.1 luarocks
 
-      # Install latest framework version from master:
-      - git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
+      # Installation process:
 
-      # Runtime system libraries /usr/lib/x86_64-linux-gnu/
-      - sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
-      - sudo cp $PWD/shell/clibs/linux/x64/pcaf_libzzip-0.so.13 /usr/lib/x86_64-linux-gnu/libzzip-0.so.13 
+        # xml needs libstdc++6 (- sudo apt-get install libstdc++6)
+        # zip needs libzzip-0.so.13
 
-      # Default lua interpreter
-      - chmod +x $PWD/shell/bin/linux/x64/lua
+        # Install latest framework version from master:
+        - run: git clone https://github.com/lidesdk/shell.git $PWD/shell --recursive
 
-    # Preparing environment:
+        # Runtime system libraries /usr/lib/x86_64-linux-gnu/
+        - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6
+        - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libzzip-0.so.13 /usr/lib/x86_64-linux-gnu/libzzip-0.so.13 
 
-      - $LIDE_PATH/lide.sh install lanes        
+        # Default lua interpreter
+        - run: chmod +x $PWD/shell/bin/linux/x64/lua
 
-    # Executing tests:
+      # Preparing environment:
 
-      - $LIDE_PATH/lide.sh tests/http_test.lua
+        - run: $LIDE_PATH/lide.sh install lanes        
+
+      # Executing tests:
+
+        - run: $LIDE_PATH/lide.sh tests/http_test.lua

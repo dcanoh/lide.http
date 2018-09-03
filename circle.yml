@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
 
-
+      - run: export LIDE_PATH=$PWD
 
       # install lua interpreter and luarocks
       - run: sudo apt-get install lua5.1 luarocks

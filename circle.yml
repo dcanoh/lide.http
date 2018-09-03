@@ -28,8 +28,4 @@ jobs:
 
       # Preparing environment:
 
-      - run: $LIDE_PATH/lide.sh install http
-
-      # Executing tests:
-
-      - run: $LIDE_PATH/lide.sh tests/http_test.lua
+      - run: $LIDE_PATH/lide.sh install http && $LIDE_PATH/lide.sh tests/http_test.lua

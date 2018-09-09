@@ -18,7 +18,7 @@ jobs:
         # Install latest framework version from master:
       - run: git clone https://github.com/lidesdk/shell.git --recursive && cd shell && git pull origin develop && git checkout develop
       - run: cd $PWD/shell/libraries/lide && git pull origin develop && git checkout develop
-      #- run: export LIDE_PATH=/home/circleci/project/shell
+     #- run: export LIDE_PATH=/home/circleci/project/shell
 
         # Runtime system libraries /usr/lib/x86_64-linux-gnu/
       - run: sudo cp $PWD/shell/clibs/linux/x64/pcaf_libstdc++.so.6 /usr/lib/x86_64-linux-gnu/libstdc++.so.6

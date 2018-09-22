@@ -43,6 +43,5 @@ build_script:
   - set PATH=%LIDE_PATH%;%PATH%
 
 test_script:
-- dir c:\projects
 - cd c:\projects\lide-http
 - lide install http && lide tests/http_test.lua

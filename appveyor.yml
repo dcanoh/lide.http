@@ -15,10 +15,6 @@ cache:
   - c:\lua -> appveyor.yml
   - c:\external -> appveyor.yml
 
-# Skip unsupported combinations (ie, VS2008 for x64 is not supported)
-init:
-- if "%platform%" EQU "x64" ( for %%a in (2008 2010 MinGW) do ( if "%Configuration%"=="%%a" (echo "Skipping unsupported configuration" && exit /b 1 ) ) )
-
 install:
 - git clone https://github.com/lidesdk/appveyor_lua.git .appveyor
 # Make compiler command line tools available
@@ -40,9 +36,9 @@ build_script:
 
   # Create environment variable named LIDE_PATH:
   - set LIDE_PATH=C:\lide\shell
-  - set PATH=%LIDE_PATH%;%PATH%
+  - set PATH=%LIDE_PATH%;%LIDE_PATH%\bin\windows\x86;%PATH%
 
 test_script:
 - cd c:\projects\lide-http
 - lide install http && lide tests/http_test.lua
-- lua install http && lide tests/http_test.lua
+- lua5.1 install http && lide tests/http_test.lua

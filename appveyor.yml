@@ -36,9 +36,8 @@ build_script:
 
   # Create environment variable named LIDE_PATH:
   - set LIDE_PATH=C:\lide\shell
-  - set PATH=%LIDE_PATH%;%LIDE_PATH%\bin\windows\x86;%PATH%
+  - set PATH=%LIDE_PATH%;
 
 test_script:
 - cd c:\projects\lide-http
 - lide install http && lide tests/http_test.lua
-- lua5.1 tests/http_test.lua

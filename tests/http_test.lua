@@ -9,10 +9,10 @@ io.stdout:write '\n[lide.http.download] - download file '
 
 http.download(url, _tmp_file, function ( dlnow, dltotal, percent )
 	-- print percent:
-	--- print (math.floor(percent) .. '%');
+	print (math.floor(percent) .. '%');
 	
 	-- print downloaded bytes:
-	--- print(dlnow .. ' bytes', dltotal .. ' bytes');
+	print(dlnow .. ' bytes', dltotal .. ' bytes');
 end);
 
 if io.open(_tmp_file) then	

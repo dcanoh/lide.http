@@ -36,7 +36,7 @@ build_script:
   - mkdir C:\lide
 
   # Clone git repository and submodules:
-  - git clone https://github.com/lidesdk/shell.git --recursive C:\lide\shell && cd C:\lide\shell && git checkout %CURRENT_BRANCH% && cd C:\lide\shell\libraries\lide && git checkout %CURRENT_BRANCH%
+  - git clone https://github.com/lidesdk/shell.git --recursive C:\lide\shell && cd C:\lide\shell && git pull origin %CURRENT_BRANCH%  && git checkout %CURRENT_BRANCH% && cd C:\lide\shell\libraries\lide && git checkout %CURRENT_BRANCH%
 
   # Create environment variable named LIDE_PATH:
   - set LIDE_PATH=C:\lide\shell
@@ -45,3 +45,4 @@ build_script:
 test_script:
 - cd c:\projects\lide-http
 - lide install http && lide tests/http_test.lua
+- lua install http && lide tests/http_test.lua

@@ -71,28 +71,35 @@ function http.download(url, destfile, callback_function)
 	file:close()
 end
 
-function http.get( ... )
-	return requests.get(...)
+function http.get( url, request_table )
+	isString(url); isTable(request_table);
+
+	return requests.get(url, request_table);
 end
 
-function http.post( ... )
-	return requests.post(...)
+function http.post( url, request_table )
+	isString(url); isTable(request_table);
+	return requests.post(url, request_table);
 end
 
-function http.put( ... )
-	return requests.put(...)
+function http.put( url, request_table )
+	isString(url); isTable(request_table);
+	return requests.put(url, request_table);
 end
 
-function http.delete ( ... )
-	return requests.delete(...)
+function http.delete ( url, request_table )
+	isString(url); isTable(request_table);
+	return requests.delete(url, request_table);
 end
 
-function http.options ( ... )
-	return requests.options(...)
+function http.options ( url, request_table )
+	isString(url); isTable(request_table);
+	return requests.options(url, request_table);
 end
 
-function http.head ( ... )
-	return requests.head(...)
+function http.head ( url, request_table )
+	isString(url); isTable(request_table);
+	return requests.head(url, request_table);
 end
 
 http.HTTPBasicAuth  = requests.HTTPBasicAuth

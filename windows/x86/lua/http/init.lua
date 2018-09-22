@@ -9,6 +9,7 @@
 --
 
 local isString   = lide.core.base.isstring
+local isTable    = lide.core.base.istable
 local isFunction = lide.core.base.isfunction
 local requests   = require 'http.requests' 
 local curl       = require 'luacurl'
@@ -72,33 +73,39 @@ function http.download(url, destfile, callback_function)
 end
 
 function http.get( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end end
 
 	return requests.get(url, request_table);
 end
 
 function http.post( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end
 	return requests.post(url, request_table);
 end
 
 function http.put( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end
 	return requests.put(url, request_table);
 end
 
 function http.delete ( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end
 	return requests.delete(url, request_table);
 end
 
 function http.options ( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end
 	return requests.options(url, request_table);
 end
 
 function http.head ( url, request_table )
-	isString(url); isTable(request_table);
+	isString(url); 
+	if request_table then isTable(request_table); end
 	return requests.head(url, request_table);
 end
 

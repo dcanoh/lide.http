@@ -41,4 +41,4 @@ build_script:
 test_script:
 - cd c:\projects\lide-http
 - lide install http 
-- %LIDE_PATH%/bin/windows/x86/lua5.1.exe %LIDE_PATH%/bin/lide51.lua tests\http_test.lua
+- call %LIDE_PATH%\bin\windows\x86\lua5.1.exe %LIDE_PATH%\bin\lide51.lua tests\http_test.lua

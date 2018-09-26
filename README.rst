@@ -17,8 +17,15 @@ HTTP and HTTPS requests support.
 ===============  ==========  ==============
   platform          arch        version
 ===============  ==========  ==============
-  ``Windows``      ``x86``      ``0.0.01``
+  ``Windows``      ``x86``      ``0.2``
 ===============  ==========  ==============
+
+========================================================= ====================================================================================
+   git branch: ``develop``                                  build status ``0.2``
+========================================================= ====================================================================================
+ Tests executed with **Windows 10** x86 binaries		    .. image:: https://ci.appveyor.com/api/projects/status/gp3wb7k28clx6ol0?svg=true
+                                                                     :target: https://ci.appveyor.com/project/dcanoh/lide-http/branch/package.lide
+========================================================= ====================================================================================
 
 Es importante contar con funciones que nos permitan comunicarnos con los estandares de internet, por
 eso he creado esta libreria, es necesario poder comunicarnos con las REST API de diferentes servicios

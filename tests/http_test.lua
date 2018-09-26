@@ -67,7 +67,3 @@ if response then
 
 	io.stdout:write '[OK]\n'
 end
-
-
-
-assert (false, 'lol')

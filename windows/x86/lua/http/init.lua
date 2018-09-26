@@ -74,7 +74,7 @@ end
 
 function http.get( url, request_table )
 	isString(url); 
-	if request_table then isTable(request_table); end end
+	if request_table then isTable(request_table); end
 
 	return requests.get(url, request_table);
 end

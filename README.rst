@@ -22,14 +22,7 @@ HTTP and HTTPS requests support.
 ===============  ==========  ============== ====================================================================================
 
 
-Es importante contar con funciones que nos permitan comunicarnos con los estandares de internet, por
-eso he creado esta libreria, es necesario poder comunicarnos con las REST API de diferentes servicios
-a nivel mundial y también para poder asegurar una completa integracion entre el framework lide y la 
-programacion web.
-
-La librería lide.http nos permite hacer requests http (post, get, put) desde lua. He añadido algunas 
-funciones adicionales que considero de bastante utilidad.
-
+La librería lide.http nos permite hacer requests http/https (post, get, put, head, delete, etc...) desde lua.
 
 
 instalacion
@@ -40,8 +33,6 @@ Para instalar ésta libreria recomiendo utilizar la linea de comandos de lide, u
 *Así todas las dependencias se instalarán automaticamente:*
 
 ``$ lide install lide.http``
-
-Recuerde que **lide.http** hace parte del repositorio de desarrollo: dcanoh_
 
 
 

@@ -17,7 +17,7 @@ HTTP and HTTPS requests support.
 ===============  ==========  ============== ====================================================================================
   platform          arch        version       build status
 ===============  ==========  ============== ====================================================================================
-  ``Windows``      ``x86``      ``0.2``       .. image:: https://ci.appveyor.com/api/projects/status/gp3wb7k28clx6ol0?svg=true
+  ``Windows``      ``x86``      ``0.2``       .. image:: https://ci.appveyor.com/api/projects/status/gp3wb7k28clx6ol0/branch/package.lide?svg=true
                                                        :target: https://ci.appveyor.com/project/dcanoh/lide-http/branch/package.lide
 ===============  ==========  ============== ====================================================================================
 

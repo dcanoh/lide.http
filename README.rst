@@ -57,7 +57,7 @@ lua API
 
 Basic usage functions.
 
-http.download ( string Url, string DestinationPath,	func downloadCallback ( number DownloadedNow, number DownloadTotal, number Percent ) )
+http.download ( string Url, string DestPath, func downldCallback ( number Downlded, number DownldTotal, number Percent ) )
 	Download the given "url" to "dest" path to the system.
 
 http.test_connection ( string Url )

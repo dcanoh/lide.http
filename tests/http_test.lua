@@ -1,5 +1,5 @@
 local lide = require 'lide.base.init'
-local http = require 'http.init'
+local http = require 'lide.http.init'
 
 url = 'http://speedtest.ftp.otenet.gr/files/test100k.db'
 

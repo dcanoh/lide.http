@@ -22,15 +22,18 @@ HTTP and HTTPS requests support.
 ===============  ==========  ============== ====================================================================================
 
 
-The library lide.http allows us to do http / https (post, get, put, head, delete, etc ...) from lua.
+La librería lide.http nos permite hacer requests http/https 
+(post, get, put, head, delete, etc...) desde lua.
+
 
 
 instalacion
 ^^^^^^^^^^^
 
-To install this library I recommend using the command line of lide, using ``lide install``.
+Para instalar ésta libreria recomiendo utilizar la linea de comandos 
+de lide, usando ``lide install``.
 
-*Thus all the dependencies will be installed automatically:*
+*Así todas las dependencias se instalarán automaticamente:*
 
 ``$ lide install lide.http``
 
@@ -39,7 +42,7 @@ To install this library I recommend using the command line of lide, using ``lide
 dependencias
 ^^^^^^^^^^^^
 
-The following dependencies are necessary to be able to run the library:
+Las siguientes dependencias son necesarias para poder ejecutar la librería:
 
 - socket 2.0.2
 - ssl_  0.4
@@ -87,38 +90,39 @@ argument or as a table.
 
 
 http.get ( string Url, table requestData )
-	The GET method requests a representation of a specific resource.
-	Requests that use the GET method should only retrieve data.
+	El método GET solicita una representación de un recurso específico. 
+	Las peticiones que usan el método GET sólo deben recuperar datos.
 
 http.head ( string Url, table requestData )
-	The HEAD method requests an identical response to that of a GET 
-	request, but without the body of the response.
+	El método HEAD pide una respuesta idéntica a la de una petición 
+	GET, pero sin el cuerpo de la respuesta.
 
 http.post ( string Url, table requestData )
-	The POST method is used to send an entity to a specific resource, 
-	often causing a change in state or side effects on the server.
+	El método POST se utiliza para enviar una entidad a un recurso en 
+	específico, causando a menudo un cambio en el estado o efectos secundarios en el servidor.
 
 http.put ( string Url, table requestData )
-	The PUT mode replaces all current representations of the 
-	destination resource with the payload of the request.
+	El modo PUT reemplaza todas las representaciones actuales del 
+	recurso de destino con la carga útil de la petición.
 
 http.delete ( string Url, table requestData )
-	The DELETE method deletes a specific resource.
+	El método DELETE borra un recurso en específico.
 
 http.connect ( string Url, table requestData )
-	The CONNECT method establishes a tunnel to the server identified 
-	by the resource.
+	El método CONNECT establece un tunel hacia el servidor 
+	identificado por el recurso.
 
 http.options ( string Url, table requestData )
-	The OPTIONS method is used to describe the communication options 
-	for the destination resource.
+	El método OPTIONS es utilizado para describir las opciones de 
+	comunicación para el recurso de destino.
 
 http.trace ( string Url, table requestData )
-	The TRACE method performs a message loopback test along the route 
-	to the destination resource.
+	El método TRACE realiza una prueba de bucle de retorno de mensaje 
+	a lo largo de la ruta al recurso de destino.
 
 http.patch ( string Url, table requestData )
-	The PATCH method is used to apply partial modifications to a resource.
+	El método PATCH  es utilizado para aplicar modificaciones 
+	parciales a un recurso.
 
 
 

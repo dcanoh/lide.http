@@ -25,8 +25,8 @@ HTTP and HTTPS requests support.
 The library lide.http allows us to do http / https (post, get, put, head, delete, etc ...) from lua.
 
 
-instalacion
-^^^^^^^^^^^
+installation
+^^^^^^^^^^^^
 
 To install this library I recommend using the command line of lide, using ``lide install``.
 
@@ -36,7 +36,7 @@ To install this library I recommend using the command line of lide, using ``lide
 
 
 
-dependencias
+dependencies
 ^^^^^^^^^^^^
 
 The following dependencies are necessary to be able to run the library:
